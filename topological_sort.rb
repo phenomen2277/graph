@@ -16,6 +16,7 @@ class TopologicalSort
 		@list.clear if @list.size > 0
 
 		recursive_topological_sort(graph, start_node)
+		@list
 	end
 
 	private
@@ -29,6 +30,5 @@ class TopologicalSort
 		end
 
 		@list.insert(0, start_node)
-		@list
 	end
 end
