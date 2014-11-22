@@ -10,6 +10,10 @@ class Graph
 		@nodes.store(node.name, node)
 	end
 
+	def get_node_by_name(name)
+		return @nodes[name]
+	end
+
 	def remove_node(node)
 		raise_type_error_when_instance_is_not_node(node)
 		@nodes.delete(node.name)
