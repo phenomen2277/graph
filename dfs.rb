@@ -7,23 +7,23 @@ class DFS
 	end
 
 	def dfs(graph, start_node)
+		raise TypeError unless graph.class.ancestors.include?(Graph§)
 		raise TypeError unless start_node.class.ancestors.include?(Node)
-		node = graph.nodes[start_node.name]
+		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
+		@result.clear if @result.size > 0
 
-		@result.push(node)
-		node.successors.each do |s|
-			dfs(graph, s) if @result.include?(s) == false
-		end
+		recursive_dfs(graph, node)
 
 		return @result
 	end
 
-	def dfs_the_whole_graph(graph)
-		@result.clear
-
-		graph.nodes.values.each do |n|
-			dfs(graph, n) if @result.include?(n) == false
+	private
+	def recursive_dfs(graph, node)
+		@result.push(node)
+		node.successors.each do |s|
+			dfs(graph, s) if @result.include?(s) == false
 		end
 	end
+
 end
