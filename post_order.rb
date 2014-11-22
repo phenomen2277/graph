@@ -16,13 +16,13 @@ class PostOrder
 		@visisted_nodes.clear if @visisted_nodes.size > 0
 		@list.clear if @list.size > 0
 
-		recursive_post_order(graph, node)
+		recursive_post_order(node)
 		return @list
 	end
 
 	private 
-	def recursive_post_order(graph, start_node)
-		@visisted_nodes.push(node)
+	def recursive_post_order(start_node)
+		@visisted_nodes.push(start_node)
 		start_node.successors.each do |n|
 			recursive_post_order(graph, n) if @visisted_nodes.include?(n) == false
 		end

@@ -13,16 +13,16 @@ class DFS
 		raise RuntimeError if node == nil
 		@result.clear if @result.size > 0
 
-		recursive_dfs(graph, node)
+		recursive_dfs(node)
 
 		return @result
 	end
 
 	private
-	def recursive_dfs(graph, node)
+	def recursive_dfs(node)
 		@result.push(node)
 		node.successors.each do |s|
-			recursive_dfs(graph, s) if @result.include?(s) == false
+			recursive_dfs(s) if @result.include?(s) == false
 		end
 	end
 

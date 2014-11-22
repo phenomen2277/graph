@@ -18,15 +18,15 @@ class TopologicalSort
 		@visisted_nodes.clear if @visisted_nodes.size > 0
 		@list.clear if @list.size > 0
 
-		recursive_topological_sort(graph, node)
+		recursive_topological_sort(node)
 		return @list
 	end
 
 	private
-	def recursive_topological_sort(graph, start_node)
-		@visisted_nodes.push(node)
+	def recursive_topological_sort(start_node)
+		@visisted_nodes.push(start_node)
 		start_node.successors.each do |n|
-			recursive_topological_sort(graph, n) if @visisted_nodes.include?(n) == false
+			recursive_topological_sort(n) if @visisted_nodes.include?(n) == false
 		end
 
 		@list.insert(0, start_node)
