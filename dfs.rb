@@ -22,7 +22,7 @@ class DFS
 	def recursive_dfs(graph, node)
 		@result.push(node)
 		node.successors.each do |s|
-			dfs(graph, s) if @result.include?(s) == false
+			recursive_dfs(graph, s) if @result.include?(s) == false
 		end
 	end
 

@@ -11,20 +11,18 @@ class ConnectedComponents
 	def parse_components(graph)
 		raise TypeError unless graph.class.ancestors.include?(Graph)
 		@result.clear if @result.size > 0
-		recursive_parse_components(graph)
+		parse(graph)
 		return @result
 	end
 
 
 	private
 
-	def recursive_parse_components(graph)
+	def parse(graph)
+		dfs = DFS.new
 		graph.nodes.values.each do |n|
-			if n.is_head?
-				dfs = DFS.new
 				path = dfs.dfs(graph, n)
 				push_to_result(path)
-			end
 		end
 	end
 

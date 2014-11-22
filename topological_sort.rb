@@ -19,7 +19,7 @@ class TopologicalSort
 		@list.clear if @list.size > 0
 
 		recursive_topological_sort(graph, node)
-		@list
+		return @list
 	end
 
 	private
