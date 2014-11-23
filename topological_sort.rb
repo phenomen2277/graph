@@ -9,8 +9,6 @@ class TopologicalSort
 	end
 
 	def topological_sort(graph, start_node)
-		raise TypeError unless graph.class.ancestors.include?(Graph)
-		raise TypeError unless start_node.class.ancestors.include?(Node)
 		raise RuntimeError, "The graph is cyclic" if GraphUtils.is_cyclic?(graph)
 		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
@@ -19,7 +17,7 @@ class TopologicalSort
 		@list.clear if @list.size > 0
 
 		recursive_topological_sort(node)
-		return @list
+		@list
 	end
 
 	private

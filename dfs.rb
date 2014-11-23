@@ -7,15 +7,13 @@ class DFS
 	end
 
 	def dfs(graph, start_node)
-		raise TypeError unless graph.class.ancestors.include?(Graph)
-		raise TypeError unless start_node.class.ancestors.include?(Node)
 		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
+
 		@result.clear if @result.size > 0
 
 		recursive_dfs(node)
-
-		return @result
+		@result
 	end
 
 	private

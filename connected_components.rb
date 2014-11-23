@@ -9,12 +9,10 @@ class ConnectedComponents
 
 
 	def parse_components(graph)
-		raise TypeError unless graph.class.ancestors.include?(Graph)
 		@result.clear if @result.size > 0
 		parse(graph)
-		return @result
+		@result
 	end
-
 
 	private
 

@@ -8,6 +8,6 @@ class GraphUtils
 				return true if n1.successors.include?(n2) && n2.successors.include?(n1)
 			end
 		end
-		return false
+		false
 	end
 end

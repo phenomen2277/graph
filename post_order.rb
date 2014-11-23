@@ -8,8 +8,6 @@ class PostOrder
 	end
 
 	def post_order(graph, start_node)
-		raise TypeError unless graph.class.ancestors.include?(Graph)
-		raise TypeError unless start_node.class.ancestors.include?(Node)
 		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
 
@@ -17,7 +15,7 @@ class PostOrder
 		@list.clear if @list.size > 0
 
 		recursive_post_order(node)
-		return @list
+		@list
 	end
 
 	private 
