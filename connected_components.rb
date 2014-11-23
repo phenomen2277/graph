@@ -7,7 +7,6 @@ class ConnectedComponents
 		@result = Array.new
 	end
 
-
 	def parse_components(graph)
 		@result.clear if @result.size > 0
 		parse(graph)
