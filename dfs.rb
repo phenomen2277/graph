@@ -7,7 +7,7 @@ class DFS
 	end
 
 	def dfs(graph, start_node)
-		raise TypeError unless graph.class.ancestors.include?(Graph§)
+		raise TypeError unless graph.class.ancestors.include?(Graph)
 		raise TypeError unless start_node.class.ancestors.include?(Node)
 		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
@@ -22,7 +22,7 @@ class DFS
 	def recursive_dfs(node)
 		@result.push(node)
 		node.successors.each do |s|
-			recursive_dfs(s) if @result.include?(s) == false
+			recursive_dfs(s) unless @result.include?(s)
 		end
 	end
 

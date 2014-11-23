@@ -24,7 +24,7 @@ class PostOrder
 	def recursive_post_order(start_node)
 		@visisted_nodes.push(start_node)
 		start_node.successors.each do |n|
-			recursive_post_order(graph, n) if @visisted_nodes.include?(n) == false
+			recursive_post_order(graph, n) unless @visisted_nodes.include?(n)
 		end
 
 		@list.push(start_node)

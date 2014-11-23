@@ -21,8 +21,10 @@ class ConnectedComponents
 	def parse(graph)
 		dfs = DFS.new
 		graph.nodes.values.each do |n|
+			if n.is_head?
 				path = dfs.dfs(graph, n)
 				push_to_result(path)
+			end
 		end
 	end
 
@@ -32,6 +34,6 @@ class ConnectedComponents
 			exists = true if item.include?(path)
 		end
 
-		@result.push(path) if exists == false
+		@result.push(path) unless exists
 	end
 end

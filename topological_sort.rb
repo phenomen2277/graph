@@ -26,7 +26,7 @@ class TopologicalSort
 	def recursive_topological_sort(start_node)
 		@visisted_nodes.push(start_node)
 		start_node.successors.each do |n|
-			recursive_topological_sort(n) if @visisted_nodes.include?(n) == false
+			recursive_topological_sort(n) unless @visisted_nodes.include?(n)
 		end
 
 		@list.insert(0, start_node)
