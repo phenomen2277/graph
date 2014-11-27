@@ -9,7 +9,7 @@ class TopologicalSort
 	end
 
 	def topological_sort(graph, start_node)
-		raise RuntimeError, "The graph is cyclic" if GraphUtils.is_cyclic?(graph)
+		raise RuntimeError, "The graph is cyclic" if GraphUtils.cyclic?(graph)
 		node = graph.get_node_by_name(start_node.name)
 		raise RuntimeError if node == nil
 

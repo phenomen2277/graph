@@ -11,12 +11,12 @@ class Node
 		@predecessors = Set.new
 	end
 
-	def is_head?()
+	def head?()
 		return true if @predecessors.size == 0
 		return false
 	end
 
-	def is_tail?() 
+	def tail?() 
 		return true if @successors.size == 0
 		return false
 	end
