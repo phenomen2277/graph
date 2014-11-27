@@ -39,13 +39,13 @@ class Graph
 		fromNode = @nodes[from_node.name]
 		toNode = @nodes[to_node.name]
 		
-		if fromNode == nil 
+		if fromNode.nil?
 			fromNode = from_node
 			@nodes.store(fromNode.name, fromNode)
 
 		end
 
-		if toNode == nil 
+		if toNode.nil?
 			toNode = to_node
 			@nodes.store(toNode.name, toNode)
 		end

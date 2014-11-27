@@ -11,7 +11,7 @@ class TopologicalSort
 	def topological_sort(graph, start_node)
 		raise RuntimeError, "The graph is cyclic" if GraphUtils.cyclic?(graph)
 		node = graph.get_node_by_name(start_node.name)
-		raise RuntimeError if node == nil
+		raise RuntimeError if node.nil?
 
 		@visisted_nodes.clear if @visisted_nodes.size > 0
 		@list.clear if @list.size > 0

@@ -8,7 +8,7 @@ class DFS
 
 	def dfs(graph, start_node)
 		node = graph.get_node_by_name(start_node.name)
-		raise RuntimeError if node == nil
+		raise RuntimeError if node.nil?
 
 		@result.clear if @result.size > 0
 
