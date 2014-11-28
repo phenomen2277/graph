@@ -2,21 +2,24 @@ require_relative 'node.rb'
 class Graph
 	attr_accessor :nodes
 	def initialize
-		@nodes = Hash.new
+		@nodes = Array.new
 	end
 
 	def add_node(node)
 		raise_type_error_when_instance_is_not_node(node)
-		@nodes.store(node.name, node)
+		@nodes.push(node) unless @nodes.include?(node)
 	end
 
 	def get_node_by_name(name)
-		return @nodes[name]
+		@nodes.each do |n|
+			return n if n.name == name
+		end
+		nil
 	end
 
 	def remove_node(node)
 		raise_type_error_when_instance_is_not_node(node)
-		@nodes.delete(node.name)
+		@nodes.delete(node)
 
 		@nodes.each do |n|
 			n.remove_successor(node)
@@ -36,18 +39,18 @@ class Graph
 		raise_type_error_when_instance_is_not_node(from_node)
 		raise_type_error_when_instance_is_not_node(to_node)
 
-		fromNode = @nodes[from_node.name]
-		toNode = @nodes[to_node.name]
+		fromNode = get_node_by_name(from_node.name)
+		toNode = get_node_by_name(to_node.name)
 		
 		if fromNode.nil?
 			fromNode = from_node
-			@nodes.store(fromNode.name, fromNode)
+			@nodes.push(fromNode)
 
 		end
 
 		if toNode.nil?
 			toNode = to_node
-			@nodes.store(toNode.name, toNode)
+			@nodes.push(toNode)
 		end
 
 		fromNode.add_successor(toNode)

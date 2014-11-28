@@ -3,8 +3,8 @@ require_relative 'graph.rb'
 
 class GraphUtils
 	def self.cyclic?(graph)
-		graph.nodes.values.each do |n1|
-			graph.nodes.values.each do |n2|
+		graph.nodes.each do |n1|
+			graph.nodes.each do |n2|
 				return true if n1.successors.include?(n2) && n2.successors.include?(n1)
 			end
 		end
