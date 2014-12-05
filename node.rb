@@ -23,12 +23,12 @@ class Node
 
 	def add_successor(successor)
 		raise_type_error_when_instance_is_not_node(successor)
-		@successors.push(successor)
+		@successors.push(successor) unless @successors.include?(successor)
 	end
 
 	def add_predecessor(predecessor)
 		raise_type_error_when_instance_is_not_node(predecessor)
-		@predecessors.push(predecessor)
+		@predecessors.push(predecessor) unless @predecessors.include?(predecessor)
 	end
 
 	def remove_successor(successor)
