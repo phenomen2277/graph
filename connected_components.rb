@@ -17,7 +17,7 @@ class ConnectedComponents
 
 	def parse(graph)
 		dfs = DFS.new
-		graph.nodes.each do |n|
+		graph.nodes.values.each do |n|
 			if n.head?
 				path = dfs.dfs(graph, n)
 				push_to_result(path)

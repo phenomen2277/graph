@@ -7,8 +7,8 @@ class Node
 	def initialize(name, value = nil)
 		@name = name
 		@value = value
-		@successors = Array.new
-		@predecessors = Array.new
+		@successors = Hash.new
+		@predecessors = Hash.new
 	end
 
 	def head?()
@@ -23,22 +23,22 @@ class Node
 
 	def add_successor(successor)
 		raise_type_error_when_instance_is_not_node(successor)
-		@successors.push(successor) unless @successors.include?(successor)
+		@successors[successor.name] = successor
 	end
 
 	def add_predecessor(predecessor)
 		raise_type_error_when_instance_is_not_node(predecessor)
-		@predecessors.push(predecessor) unless @predecessors.include?(predecessor)
+		@predecessors[predecessor.name] = predecessor
 	end
 
 	def remove_successor(successor)
 		raise_type_error_when_instance_is_not_node(successor)
-		@successors.delete(successor)
+		@successors.delete(successor.name)
 	end
 
 	def remove_predecessor(predecessor)
 		raise_type_error_when_instance_is_not_node(predecessor)
-		@predecessors.delete(predecessor)
+		@predecessors.delete(predecessor.name)
 	end
 
 	def has_successors?

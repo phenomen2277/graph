@@ -21,7 +21,7 @@ class PostOrder
 	private 
 	def recursive_post_order(start_node)
 		@visisted_nodes.push(start_node)
-		start_node.successors.each do |n|
+		start_node.successors.values.each do |n|
 			recursive_post_order(n) unless @visisted_nodes.include?(n)
 		end
 

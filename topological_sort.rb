@@ -23,7 +23,7 @@ class TopologicalSort
 	private
 	def recursive_topological_sort(start_node)
 		@visisted_nodes.push(start_node)
-		start_node.successors.each do |n|
+		start_node.successors.values.each do |n|
 			recursive_topological_sort(n) unless @visisted_nodes.include?(n)
 		end
 
