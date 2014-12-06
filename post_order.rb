@@ -3,7 +3,7 @@ require_relative 'graph.rb'
 
 class PostOrder
 	def initialize
-		@visisted_nodes = Array.new
+		@visisted_nodes = Hash.new
 		@list = Array.new
 	end
 
@@ -20,9 +20,9 @@ class PostOrder
 
 	private 
 	def recursive_post_order(start_node)
-		@visisted_nodes.push(start_node)
+		@visisted_nodes[start_node.name] = start_node
 		start_node.successors.values.each do |n|
-			recursive_post_order(n) unless @visisted_nodes.include?(n)
+			recursive_post_order(n) if @visisted_nodes[n.name].nil?
 		end
 
 		@list.push(start_node)
